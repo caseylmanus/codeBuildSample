@@ -18,7 +18,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing to ECR
       - docker push 846416704964.dkr.ecr.us-east-1.amazonaws.com/code-build-sample:latest
-      - echo [{\"name\":\"code-build-sample\", \"imageUri\":\"846416704964.dkr.ecr.us-east-1.amazonaws.com/code-build-sample:latest\"}] > imagedefinitions.json
+      - echo [{\"name\":\"code-build-test\", \"imageUri\":\"846416704964.dkr.ecr.us-east-1.amazonaws.com/code-build-sample:latest\"}] > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
 
