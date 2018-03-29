@@ -1,9 +1,16 @@
-version 0.2
+version: 0.2
 
 phases:
-  pre-build:
-    - echo Logging into Amazon ECR
-    - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+  install:
+    commands:
+      - echo Nothing to do in the install phase...
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
   build:
-    - echo Build started on `date`
-    - docker build . 
+    commands:
+      - echo Build started on `date`
+      - docker build .
+  post_build:
+    commands:
+      - echo Build completed on `date`
