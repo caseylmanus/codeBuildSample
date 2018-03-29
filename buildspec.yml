@@ -6,11 +6,16 @@ phases:
       - echo Nothing to do in the install phase...
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - echo Login to ECR
+      - $(aws ecr get-login --no-include-email --region us-east-1)
   build:
     commands:
       - echo Build started on `date`
-      - docker build .
+      - docker build -t code-build-sample .
+      - docker tag code-build-sample:latest 846416704964.dkr.ecr.us-east-1.amazonaws.com/code-build-sample:latest
   post_build:
     commands:
       - echo Build completed on `date`
+      - echo Pushing to ECR
+      - docker push 846416704964.dkr.ecr.us-east-1.amazonaws.com/code-build-sample:latest
+
